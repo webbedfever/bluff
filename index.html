@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bluff — NBA hub</title>
+  <meta name="theme-color" content="#000000" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Icon sprite: referenced with <svg><use href="#i-name"/></svg> -->
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 4l8.5 6.5V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-scores" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M12 5v14M7 10v4M17 10v4"/></symbol>
+    <symbol id="i-stats" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/></symbol>
+    <symbol id="i-groups" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M15.5 5.2a3.5 3.5 0 0 1 0 6.6M18 14.8c2 .7 3.2 2.5 3.5 5.2"/></symbol>
+    <symbol id="i-predict" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9" fill="currentColor"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 7h3.5c4.5 0 6.5 10 11 10H21M3 17h3.5c1.6 0 2.8-1.2 3.8-2.8M14.2 9.8C15.2 8.2 16.4 7 18 7h3M18.5 4.5 21 7l-2.5 2.5M18.5 14.5 21 17l-2.5 2.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 20.5c.8-4 3.7-6 7.5-6s6.7 2 7.5 6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2A3.6 3.6 0 0 0 12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.1 0 2.1-.5 2.8-1.2"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14 4h4.5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H14M10 8l-4 4 4 4M6 12h10"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M7 9h10M7 12.5h10M7 16h6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8z"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1" fill="currentColor"/><path d="M12 13v7"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20.5h7M10 17h4l.5 3.5h-5z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="app">
+    <!-- ============ Sidebar ============ -->
+    <aside class="sidebar" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Bluff home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="var(--accent)" />
+          <path d="M16 2v28M2 16h28M7 5.5c4.5 3 6.5 6.5 6.5 10.5S11.5 23.5 7 26.5M25 5.5c-4.5 3-6.5 6.5-6.5 10.5s2 7.5 6.5 10.5"
+                fill="none" stroke="#000" stroke-width="1.8" />
+        </svg>
+        <span class="brand__word">Bluff</span>
+      </a>
+
+      <nav class="nav">
+        <p class="nav__group">League</p>
+        <a class="nav__item" href="#home" data-route="home">
+          <svg class="icon"><use href="#i-home"/></svg><span>Home</span>
+        </a>
+        <a class="nav__item" href="#scores" data-route="scores">
+          <svg class="icon"><use href="#i-scores"/></svg><span>Scores</span>
+        </a>
+        <a class="nav__item" href="#stats" data-route="stats">
+          <svg class="icon"><use href="#i-stats"/></svg><span>Stats</span>
+        </a>
+
+        <p class="nav__group">Compete</p>
+        <a class="nav__item" href="#groups" data-route="groups">
+          <svg class="icon"><use href="#i-groups"/></svg><span>Groups</span>
+        </a>
+        <a class="nav__item" href="#predictions" data-route="predictions">
+          <svg class="icon"><use href="#i-predict"/></svg><span>Predictions</span>
+        </a>
+
+        <p class="nav__group">Tools</p>
+        <a class="nav__item" href="#matchup" data-route="matchup">
+          <svg class="icon"><use href="#i-shuffle"/></svg><span>2K Matchups</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <p class="sidebar__foot-title">Following</p>
+        <p class="sidebar__foot-copy">Teams and players you follow get pinned here for one-click access.</p>
+        <a class="text-link" href="#home" data-action="follow">Pick favorites</a>
+      </div>
+    </aside>
+
+    <!-- ============ Main column ============ -->
+    <div class="main-col">
+      <header class="topbar">
+        <a class="topbar__brand" href="#home" aria-label="Bluff home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="var(--accent)" />
+            <path d="M16 2v28M2 16h28M7 5.5c4.5 3 6.5 6.5 6.5 10.5S11.5 23.5 7 26.5M25 5.5c-4.5 3-6.5 6.5-6.5 10.5s2 7.5 6.5 10.5"
+                  fill="none" stroke="#000" stroke-width="1.8" />
+          </svg>
+          <span class="brand__word">Bluff</span>
+        </a>
+
+        <label class="search">
+          <svg class="icon"><use href="#i-search"/></svg>
+          <span class="visually-hidden">Search</span>
+          <input type="search" placeholder="Search teams, players, games" autocomplete="off" />
+          <kbd class="search__kbd">/</kbd>
+        </label>
+
+        <div class="profile">
+          <button class="avatar" id="profileButton" aria-haspopup="menu" aria-expanded="false" aria-controls="profileMenu">
+            <span class="visually-hidden">Open profile menu</span>
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <circle cx="20" cy="15.5" r="6.5" />
+              <path d="M7.5 35c1.6-7 6.4-10.5 12.5-10.5S30.9 28 32.5 35" />
+            </svg>
+          </button>
+
+          <div class="menu" id="profileMenu" role="menu" aria-labelledby="profileButton" hidden>
+            <div class="menu__head">
+              <span class="avatar avatar--sm" aria-hidden="true">
+                <svg viewBox="0 0 40 40"><circle cx="20" cy="15.5" r="6.5" /><path d="M7.5 35c1.6-7 6.4-10.5 12.5-10.5S30.9 28 32.5 35" /></svg>
+              </span>
+              <div>
+                <p class="menu__name">Guest</p>
+                <p class="menu__sub">Not signed in</p>
+              </div>
+            </div>
+            <div class="menu__list">
+              <a role="menuitem" href="#profile" class="menu__item"><svg class="icon"><use href="#i-user"/></svg>Profile</a>
+              <a role="menuitem" href="#account-settings" class="menu__item"><svg class="icon"><use href="#i-settings"/></svg>Settings</a>
+              <a role="menuitem" href="#preferences" class="menu__item"><svg class="icon"><use href="#i-sliders"/></svg>Preferences</a>
+              <a role="menuitem" href="#credits" class="menu__item">
+                <svg class="icon"><use href="#i-coin"/></svg>Credits
+                <span class="menu__meta">—</span>
+              </a>
+            </div>
+            <div class="menu__list menu__list--foot">
+              <button role="menuitem" class="menu__item" type="button"><svg class="icon"><use href="#i-logout"/></svg>Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="content" tabindex="-1">
+
+        <!-- ================= HOME ================= -->
+        <section class="view" data-view="home" aria-labelledby="todayTitle">
+
+          <!-- Today in the NBA -->
+          <div class="today">
+            <div class="today__head">
+              <div>
+                <h1 class="today__title" id="todayTitle">Today in the NBA</h1>
+                <p class="today__date" id="todayDate" aria-live="polite"></p>
+              </div>
+
+              <div class="today__controls">
+                <div class="segmented" role="tablist" aria-label="Choose day">
+                  <button role="tab" class="segmented__btn" data-day="-1" aria-selected="false">Yesterday</button>
+                  <button role="tab" class="segmented__btn" data-day="0" aria-selected="true">Today</button>
+                  <button role="tab" class="segmented__btn" data-day="1" aria-selected="false">Tomorrow</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="today__bar">
+              <div class="chips" role="group" aria-label="Filter games">
+                <button class="chip is-active" aria-pressed="true">All games</button>
+                <button class="chip" aria-pressed="false"><span class="live-dot" aria-hidden="true"></span>Live</button>
+                <button class="chip" aria-pressed="false">Upcoming</button>
+                <button class="chip" aria-pressed="false">Final</button>
+              </div>
+              <a class="text-link" href="#scores">Full scoreboard</a>
+            </div>
+
+            <!-- Scoreboard rail. Slots below are structural only — they mark where
+                 game cards render once the schedule feed is connected. -->
+            <div class="board" aria-describedby="boardEmpty">
+              <div class="board__rail" id="boardRail">
+                <!-- JS clones the template below into 6 empty slots -->
+              </div>
+              <div class="board__empty" id="boardEmpty">
+                <svg class="icon icon--lg"><use href="#i-signal"/></svg>
+                <div>
+                  <p class="board__empty-title">No games loaded</p>
+                  <p class="board__empty-copy">Live scores, tip-off times and final results will fill this board once the schedule feed is connected.</p>
+                </div>
+              </div>
+            </div>
+
+            <template id="slotTemplate">
+              <article class="slot" aria-hidden="true">
+                <div class="slot__status"><span class="bar bar--xs"></span><span class="bar bar--xxs"></span></div>
+                <div class="slot__team">
+                  <span class="slot__logo"></span><span class="bar bar--md"></span><span class="slot__score"></span>
+                </div>
+                <div class="slot__team">
+                  <span class="slot__logo"></span><span class="bar bar--sm"></span><span class="slot__score"></span>
+                </div>
+                <div class="slot__foot"><span class="bar bar--xs"></span></div>
+              </article>
+            </template>
+          </div>
+
+          <!-- Lower grid -->
+          <div class="home-grid">
+
+            <!-- Stories -->
+            <section class="block block--stories" aria-labelledby="storiesTitle">
+              <header class="block__head">
+                <h2 class="block__title" id="storiesTitle">Top stories</h2>
+                <a class="text-link" href="#news">All news</a>
+              </header>
+
+              <article class="feature">
+                <div class="feature__media">
+                  <div class="feature__empty">
+                    <svg class="icon icon--lg"><use href="#i-news"/></svg>
+                    <p>The lead story and its photo will run here.</p>
+                  </div>
+                </div>
+                <div class="feature__body" aria-hidden="true">
+                  <span class="bar bar--tag"></span>
+                  <span class="bar bar--headline"></span>
+                  <span class="bar bar--headline bar--short"></span>
+                </div>
+              </article>
+
+              <ul class="headlines" aria-label="Headlines (awaiting news source)">
+                <li class="headline" aria-hidden="true"><span class="headline__thumb"></span><span class="headline__text"><span class="bar bar--lg"></span><span class="bar bar--sm"></span></span></li>
+                <li class="headline" aria-hidden="true"><span class="headline__thumb"></span><span class="headline__text"><span class="bar bar--lg"></span><span class="bar bar--md"></span></span></li>
+                <li class="headline" aria-hidden="true"><span class="headline__thumb"></span><span class="headline__text"><span class="bar bar--lg"></span><span class="bar bar--sm"></span></span></li>
+                <li class="headline" aria-hidden="true"><span class="headline__thumb"></span><span class="headline__text"><span class="bar bar--lg"></span><span class="bar bar--md"></span></span></li>
+              </ul>
+              <p class="block__note">Headlines appear once a news source is connected.</p>
+            </section>
+
+            <!-- Right rail -->
+            <div class="side-stack">
+
+              <!-- Following -->
+              <section class="block" aria-labelledby="followTitle">
+                <header class="block__head">
+                  <h2 class="block__title" id="followTitle">Your teams</h2>
+                </header>
+                <div class="empty">
+                  <div class="empty__logos" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <p class="empty__copy">Follow teams and players to see their next game, latest result and news first.</p>
+                  <button class="btn btn--primary" type="button" data-action="follow">
+                    <svg class="icon"><use href="#i-star"/></svg>Follow teams
+                  </button>
+                </div>
+              </section>
+
+              <!-- Standings -->
+              <section class="block" aria-labelledby="standingsTitle">
+                <header class="block__head">
+                  <h2 class="block__title" id="standingsTitle">Standings</h2>
+                  <div class="segmented segmented--sm" role="tablist" aria-label="Conference">
+                    <button role="tab" class="segmented__btn" aria-selected="true">East</button>
+                    <button role="tab" class="segmented__btn" aria-selected="false">West</button>
+                  </div>
+                </header>
+                <table class="table">
+                  <caption class="visually-hidden">Conference standings (awaiting data)</caption>
+                  <thead>
+                    <tr><th scope="col" class="num">#</th><th scope="col">Team</th><th scope="col" class="num">W</th><th scope="col" class="num">L</th><th scope="col" class="num">Pct</th><th scope="col" class="num">GB</th></tr>
+                  </thead>
+                  <tbody id="standingsBody"><!-- empty rows rendered by JS --></tbody>
+                </table>
+                <a class="text-link block__foot-link" href="#stats">Full standings</a>
+              </section>
+
+              <!-- Group -->
+              <section class="block block--group" aria-labelledby="groupTitle">
+                <header class="block__head">
+                  <h2 class="block__title" id="groupTitle">Your group</h2>
+                </header>
+                <ol class="podium" aria-hidden="true">
+                  <li class="podium__row"><span class="medal medal--gold"></span><span class="slot__logo slot__logo--sm"></span><span class="bar bar--md"></span><span class="bar bar--xxs"></span></li>
+                  <li class="podium__row"><span class="medal medal--silver"></span><span class="slot__logo slot__logo--sm"></span><span class="bar bar--sm"></span><span class="bar bar--xxs"></span></li>
+                  <li class="podium__row"><span class="medal medal--bronze"></span><span class="slot__logo slot__logo--sm"></span><span class="bar bar--md"></span><span class="bar bar--xxs"></span></li>
+                </ol>
+                <p class="empty__copy">Start a private group with up to five friends. Call game winners and player stat lines, earn Credits, and climb your group's board.</p>
+                <div class="btn-row">
+                  <button class="btn btn--primary" type="button"><svg class="icon"><use href="#i-plus"/></svg>Create a group</button>
+                  <button class="btn btn--ghost" type="button"><svg class="icon"><use href="#i-link"/></svg>Join with code</button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PLACEHOLDER VIEWS ================= -->
+        <section class="view view--placeholder" data-view="scores" hidden>
+          <h1 class="page-title">Scores</h1>
+          <p class="page-lede">Every game on the schedule, day by day: live scores, box scores and final results.</p>
+          <div class="soon"><svg class="icon icon--lg"><use href="#i-scores"/></svg><p>The full scoreboard is in development.</p></div>
+        </section>
+
+        <section class="view view--placeholder" data-view="stats" hidden>
+          <h1 class="page-title">Stats</h1>
+          <p class="page-lede">Player and team statistics, comparisons and charts.</p>
+          <div class="soon"><svg class="icon icon--lg"><use href="#i-stats"/></svg><p>Stats is in development.</p></div>
+        </section>
+
+        <section class="view view--placeholder" data-view="groups" hidden>
+          <h1 class="page-title">Groups</h1>
+          <p class="page-lede">Private groups of up to five friends, with leaderboards and season rankings.</p>
+          <div class="soon"><svg class="icon icon--lg"><use href="#i-groups"/></svg><p>Groups is in development.</p></div>
+        </section>
+
+        <section class="view view--placeholder" data-view="predictions" hidden>
+          <h1 class="page-title">Predictions</h1>
+          <p class="page-lede">Pick game winners and player stat lines against your group, played for Credits.</p>
+          <div class="soon"><svg class="icon icon--lg"><use href="#i-predict"/></svg><p>Predictions is in development.</p></div>
+        </section>
+
+        <section class="view view--placeholder" data-view="matchup" hidden>
+          <h1 class="page-title">2K Matchups</h1>
+          <p class="page-lede">Draw two random teams for your next NBA 2K game, with optional tier balancing.</p>
+          <div class="soon"><svg class="icon icon--lg"><use href="#i-shuffle"/></svg><p>The matchup generator is moving here soon.</p></div>
+        </section>
+
+        <section class="view view--placeholder" data-view="notfound" hidden>
+          <h1 class="page-title">Not built yet</h1>
+          <p class="page-lede">This page is part of a later stage of Bluff.</p>
+          <div class="soon"><a class="btn btn--primary" href="#home">Back to home</a></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Mobile tab bar (shown under 760px) -->
+    <nav class="tabbar" aria-label="Primary (mobile)">
+      <a class="tabbar__item" href="#home" data-route="home"><svg class="icon"><use href="#i-home"/></svg><span>Home</span></a>
+      <a class="tabbar__item" href="#scores" data-route="scores"><svg class="icon"><use href="#i-scores"/></svg><span>Scores</span></a>
+      <a class="tabbar__item" href="#stats" data-route="stats"><svg class="icon"><use href="#i-stats"/></svg><span>Stats</span></a>
+      <a class="tabbar__item" href="#groups" data-route="groups"><svg class="icon"><use href="#i-groups"/></svg><span>Groups</span></a>
+      <a class="tabbar__item" href="#predictions" data-route="predictions"><svg class="icon"><use href="#i-predict"/></svg><span>Predict</span></a>
+    </nav>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
